@@ -1,0 +1,44 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // Apply Flutter Gradle Plugin after the Android and Kotlin plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    // Set your app's namespace (defined in the Android block)
+    namespace  "com.example.taskreminderapp"  // Ensure this matches your package name
+    compileSdk  flutter.compileSdkVersion
+    ndkVersion  flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        // Application ID (package name)
+        applicationId = "com.example.taskreminderapp"  // Make sure this matches your package name
+        // Set minSdk and targetSdk versions based on Flutter configuration
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            // Signing config (typically debug for now, but you should configure this for production)
+            signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+// Link to Flutter source
+flutter {
+    source = "../.."  // Ensure this path points correctly to your Flutter project source directory
+}
